@@ -1,3 +1,7 @@
+# look at the phew library for micropython to create a rest api
+# https://www.hackster.io/rajivcodelab/how-to-build-a-rest-api-on-raspberry-pi-pico-w-control-led-91b25b
+# https://pypi.org/project/micropython-phew/
+
 import time
 import network
 import rp2
