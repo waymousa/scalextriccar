@@ -5,6 +5,8 @@ from c_controller_factory import CControllerFactory
 from c_car_factory import CCarFactory
 import logging
 import secrets
+import asyncio
+from asyncio import Queue
 
 logging.basicConfig(level=logging.DEBUG)
 log = logging.getLogger(__name__)
@@ -20,7 +22,8 @@ class CEventManager:
         self.total_laps = 0
         self.max_participants = 0
         self.race_commands = []
-        self.race_controller = CControllerFactory.create_controller(controller_type)
+        self.lap_time_queue = Queue()
+        self.race_controller = CControllerFactory.create_controller(self, controller_type)
 
     def create_race(self, total_laps: int=10, max_participants: int =6) -> None:
         log.info("Creating race")
@@ -207,5 +210,10 @@ class CEventManager:
     def receive_controller_response(self, response):
         log.debug("Receiving controller response")
         print(f"Controller response received: {response}")
+
+    async def run(self):
+        log.info("Starting EventManager main loop")
+        while True:
+            laptime = await self.lap_time_queue.get()
 
 
