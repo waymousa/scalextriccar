@@ -10,11 +10,17 @@ The architecture is basically tha same as the previous version, however the race
 
 ## Class Hierarcy
 
-Add diagram here
+The UML for the class diagram is found here.  The CEventManager uses a Facade pattern to simply the car, driver, control events and laptime management.  The GameFacade allows you to drive the EventManager using SQS, MQTT or Local API calls, so you can build your UX for local or Cloud distribution.  With CLoud distribution, it is possible to have remote players interacting witht he game through mobile device and the video feed.
+
+![Class Diagram](scpb_class_diagram-Class Hierarcy.jpg)
 
 ## Sequence Diagram
 
-Add diagram here
+The eimplified UML sequence diagram for the code is found here.  The main.py is a convenience script for testing the CEventManager.  You should build your own UX to interact with the CEventManager.  
+
+![Sequence Diagram](scpb_class_diagram-Sequence Diagram.jpg)
+
+
 
 
 
